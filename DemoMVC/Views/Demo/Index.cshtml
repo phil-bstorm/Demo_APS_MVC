@@ -1,0 +1,14 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    int nb = (int?)ViewData["nb"] ?? 0;
+    int total = nb+2;
+}
+
+<h2>Demo index! (@ViewData["date"])</h2>
+
+<p>Nombre passé par le controlleur: @ViewData["nb"]</p>
+<p>Nombre passé par le controlleur+2 (not working): @ViewData["nb"]+2</p>
+<p>Nombre passé par le controlleur+2 (bad way): @(((int)ViewData["nb"])+2)</p>
+<p>Nombre passé par le controlleur+2 (good way): @total</p>
