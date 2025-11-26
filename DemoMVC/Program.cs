@@ -7,11 +7,12 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 // - Middleware custom
-app.Use(async (context, next) => {
+app.Use(async (context, next) =>
+{
 
     // logic (avant le controlleur)
-    Console.WriteLine("Bonjour !"+
-            "\n - Méthode : " + context.Request.Method+
+    Console.WriteLine("Bonjour !" +
+            "\n - Méthode : " + context.Request.Method +
             "\n - Route: " + context.Request.Path
         );
 
@@ -38,8 +39,21 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Routing
+// -> Route par défaut (ne pas supprimer)
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// -> Route custom pour le blog avec un slug -> "/blog/xbox", "/blog/ps5", ...
+app.MapControllerRoute(
+    name: "blog",
+    pattern: "blog/{slug}",
+    defaults: new
+    {
+        controller = "Blog",
+        action = "Example"
+    }
+);
 
 app.Run();
