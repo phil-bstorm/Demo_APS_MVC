@@ -6,6 +6,24 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+// - Middleware custom
+app.Use(async (context, next) => {
+
+    // logic (avant le controlleur)
+    Console.WriteLine("Bonjour !"+
+            "\n - Méthode : " + context.Request.Method+
+            "\n - Route: " + context.Request.Path
+        );
+
+    await next();
+
+    // logic (après le controlleur)
+    Console.WriteLine("Aurevoir !" +
+            "\n - Méthode : " + context.Request.Method +
+            "\n - Route: " + context.Request.Path
+        );
+});
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
