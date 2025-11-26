@@ -11,6 +11,15 @@ namespace DemoMVC.Controllers
             ViewData["nb"] = 42;
 
             // Génération de la vue
+
+        public IActionResult OldRoute()
+        {
+            //return RedirectToActionPermanent("CurrentRoute"); // éviter le text hard-coder avec nameof()
+            return RedirectToActionPermanent(nameof(CurrentRoute));
+        }
+
+        public IActionResult CurrentRoute()
+        {
             return View();
         }
     }
