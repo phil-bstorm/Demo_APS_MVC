@@ -1,4 +1,6 @@
-﻿@*
+﻿@model DemoIndexViewModel
+
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -23,5 +25,13 @@
             int res = table * i;
             <li>@i x @table = @res</li>
         }
+    }
+</ul>
+
+<h3>Liste de personnes:</h3>
+<ul>
+    @foreach(PersonViewModel person in Model.people)
+    {
+        <li>@person.Firstname</li>
     }
 </ul>
