@@ -12,3 +12,16 @@
 <p>Nombre passé par le controlleur+2 (not working): @ViewData["nb"]+2</p>
 <p>Nombre passé par le controlleur+2 (bad way): @(((int)ViewData["nb"])+2)</p>
 <p>Nombre passé par le controlleur+2 (good way): @total</p>
+
+<h3>Table de multiplication</h3>
+<ul>
+    @{
+        int nbOperation = 10;
+        int table = 2;
+        for(int i = 1; i <= nbOperation; i++)
+        {
+            int res = table * i;
+            <li>@i x @table = @res</li>
+        }
+    }
+</ul>
